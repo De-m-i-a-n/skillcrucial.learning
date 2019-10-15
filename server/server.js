@@ -56,11 +56,15 @@ server.get('/js/variables.js', (req, res) => {
 
 const getFakeUser = () => {
   return {
+    avatar: faker.internet.avatar(),
     name: faker.name.findName(),
     email: faker.internet.email(),
     company: faker.company.companyName(),
-    salary: faker.finance.amount(),
-    age: (faker.random.number() % 30) + 18
+    salary: faker.finance.amount(1000, 9000, 0, '$'),
+    age: (faker.random.number() % 30) + 18,
+    phone: faker.phone.phoneNumber(),
+    zip: faker.address.zipCode(),
+    city: faker.address.city()
   }
 }
 

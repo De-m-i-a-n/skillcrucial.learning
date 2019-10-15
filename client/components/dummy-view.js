@@ -22,24 +22,38 @@ const Dummy = (props) => {
       <div> {props.isRequesting ? 'Your data is loading' : ''} </div>
       <div> Hello World {counter} </div>
       <table>
-        <tr>
-          <td>Name</td>
-          <td>Email</td>
-          <td>Company</td>
-          <td>Salary</td>
-          <td>Age</td>
-        </tr>
-        {
-          props.users.map(user => (
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Avatar</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Company</th>
+            <th>Salary</th>
+            <th>Age</th>
+            <th>Phone</th>
+            <th>Zip</th>
+            <th>City</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+          !props.isRequesting ? props.users.map((user, idx) => (
             <tr>
+              <td>{idx + 1}</td>
+              <td><img src={user.avatar} width="24" alt={user.name} /></td>
               <td>{user.name}</td>
               <td>{user.email}</td>
               <td>{user.company}</td>
               <td>{user.salary}</td>
               <td>{user.age}</td>
+              <td>{user.phone}</td>
+              <td>{user.zip}</td>
+              <td>{user.city}</td>
             </tr>
-          ))
+          )) : ''
         }
+        </tbody>
       </table>
       <img src={`/tracker/${counter}.gif`} alt="tracker" />
     </div>
